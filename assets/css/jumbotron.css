@@ -1,0 +1,215 @@
+/* Move down content because we have a fixed navbar that is 50px tall */
+body {
+  padding-top: 2rem;
+  font-family: serif;
+  background-image: url(../img/Book-wall.jpg);
+  background-size: cover;
+}
+.nav-item a {
+  float: left;
+  padding-right: 20px;
+}
+
+
+
+
+label {
+  font-weight: bold;
+}
+hr {
+  margin-top: 100px;
+}
+
+.jumbotron {
+  height: 350px;
+  background-image: url(../img/books3.png);
+  background-size: cover;
+  background-color:rgba(255,255,255,0.8);
+}
+.jumbotron a {
+  margin-bottom: 50px;
+}
+
+.container h1 {
+  padding-bottom: 30px;
+  font-size: 60px;
+  font-family: cursive;
+}
+.initial-font {
+  font-size: 100px;
+  color: crimson;
+}
+.nav-initial-font {
+  font-size: 30px;
+  color: crimson;
+  font-family: cursive;
+}
+
+
+.row {
+  text-align: center;
+}
+
+
+/* トップ */
+/* .info {
+  float: left;
+  width: 80%;
+} */
+.information {
+  margin-bottom: 3px;
+  /* position: relative; */
+  display: block;
+}
+.btn-info {
+  /* float: left; */
+  width: 100px;
+  position: relative;
+}
+.info1, .info2, .info3 {
+  font-size: 15px;
+  background: rgba(255,255,255,0.7);
+  color: #000;
+  margin: 0;
+  float: right;
+  display: none;
+
+  height: 30px;
+  width: 50%;
+  line-height: 30px;
+  text-align: center;
+  font-weight: bold;
+}
+
+
+
+
+
+/* モーダル */
+#graydisplay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  max-width: 100%!important;
+  height: 100%;
+  background: rgba(0,0,0,0.45);
+  z-index: 1040;
+}
+#graydisplay img {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  max-width: 90%;
+  max-height: 90%;
+  height: 90%;
+  z-index: 1041;
+}
+
+/* モーダル２ */
+#bg {
+  height:100%;
+  width:100%;
+  top:50%;
+  left:50%;
+  position:fixed;
+  background:rgba(0,0,0,0.4);
+  transform:translate(-50%,-50%);
+  z-index: 1040;
+  display: none;
+}
+#modal {
+  position:fixed;
+  width:90%;
+  height:auto;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  background:#fff;
+  overflow-y:scroll;
+  z-index: 1041;
+  display: none;
+}
+.close-modal {
+  position: absolute;
+  top: 2px;
+  right: 5px;
+  display: block;
+  cursor: pointer;
+  z-index: 1042;
+}
+
+
+
+
+
+/* スライダー */
+.slider {
+  padding: 0;
+}
+.slider img {
+  height: auto;
+  width: 85%;
+  padding: 0 5% 0 20%;
+  margin: 3% 0 0 0;
+}
+.slick-track {
+  margin: 0;
+}
+.img-thumbnail {
+  max-width: 200px;
+}
+.thumb {
+  padding: 0;
+}
+.thumb img{
+height: auto;
+width: 100%;
+}/*slick setting*/
+.slick-prev:before,
+.slick-next:before{
+  color: #000;
+  display: none;
+}
+
+
+/* footer */
+.footer {
+  height: 60px;
+  color: #fff;
+  background-color: #292b2c!important;
+}
+.footer-left {
+  float: left;
+}
+.footer-right {
+  float: right;
+  height: 40px;
+}
+
+.footer-right a {
+  margin-right: 20px;
+}
+.fa-stack {
+  margin-bottom: 16px;
+}
+.fa-twi-color {
+  color: #fff;
+}
+.fa-face-color {
+  color: #3b5999;
+}
+.fa-square {
+  color: #fff;
+}
+.fa-insta-square {
+  color: #e4405f;
+}
+
+.fa-mail-color {
+  color: #fff;
+}
