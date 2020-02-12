@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Portfoliosite">
+    <meta name="author" content="Taiki">
+    <title>T's plofile</title>
+
+
+    <link rel="icon" href="assets/img/icon-book.png">
+    <!-- bootstrap テンプレート -->
+    <link rel="stylesheet" href="./dist/css/bootstrap.min.css">
+    <!-- <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/jumbotron/"> -->
+
+    <!--  ？？？？  -->
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> -->
+    <!-- <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script> -->
+
+    <!-- スライダー -->
+    <link rel="stylesheet" type="text/css" href="assets/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="assets/slick/slick-theme.css"/>
+
+      <!-- フォント -->
+    <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+
+
+    <link rel="stylesheet" href="assets/css/jumbotron.css">
+  </head>
+
+  <body>
+    <!-- ナビゲーションバー -->
+    <nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse">
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <a class="navbar-brand" href="#"><span class="nav-initial-font">T</span>'s</a>
+
+      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" id="nav-1" href="#1">Top <span class="sr-only">(current)</span></a>
+            <a class="nav-link" id="nav-2" href="#2">Works <span class="sr-only">(current)</span></a>
+            <a class="nav-link" id="nav-3" href="#3">Contact <span class="sr-only">(current)</span></a>
+          </li>
+        </ul>
+
+<!-- 検索窓 -->
+        <!-- <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" type="text" placeholder="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form> -->
+      </div>
+    </nav>
+
+    <!-- メインコンテンツ  -->
+    <!-- TOP -->
+    <div class="jumbotron" id="1">
+      <div class="jumbotron-bg"></div>
+      <div class="container">
+        <h1 class="display-3"><span class="initial-font">T</span>'s  Profile</h1>
+        <!-- <div class="info"> -->
+          <div class="information">
+            <button type="button" class="btn btn-info btn1">Name</button>
+            <p class="info1">仲間 大記   (なかま たいき)</p>
+          </div>
+          <div class="information">
+            <button type="button" class="btn btn-info btn2">Affiliation</button>
+            <p class="info2">CODE BASE 9期生 / 琉球大学</p>
+          </div>
+          <div class="information">
+            <button type="button" class="btn btn-info btn3">Info</button>
+            <p class="info3">大学3年でエンジニア職に興味があり、日々勉強しています。</p>
+          </div>
+        <!-- </div> -->
+      </div>
+    </div>
+
+    <!-- Works -->
+    <div class="container" id="2">
+        <h1><span class="initial-font">W</span>orks</h1>
+        <p id="test"></p>
+        <div class="row">
+          <div class="col-md-4">
+            <h2>Portfolio1</h2>
+            <img src="assets/img/ai-business.jpg" alt="responsive image" class="img-thumbnail btn-modal">
+            <p>何か作ります何か作ります<br>何か作ります何か作ります<br>何か作ります何か作ります<br>何か作ります何か作ります<br>何か作ります何か作ります</p>
+            <p><a class="btn btn-secondary open-modal" href="#!" role="button">詳しく見る &raquo;</a></p>
+          </div>
+          <div class="col-md-4">
+            <h2>Portfolio2</h2>
+            <img src="assets/img/business.jpg" alt="responsive image" class="img-thumbnail btn-modal">
+            <p>何か作ります何か作ります<br>何か作ります何か作ります<br>何か作ります何か作ります<br>何か作ります何か作ります<br>何か作ります何か作ります</p>
+            <p><a class="btn btn-secondary open-modal" href="#!" role="button">詳しく見る &raquo;</a></p>
+          </div>
+          <div class="col-md-4">
+            <h2>ポートフォリオ３</h2>
+            <img src="assets/img/computer_screen_programming.png"  alt="responsive image" class="img-thumbnail btn-modal">
+            <p>何か作ります何か作ります<br>何か作ります何か作ります<br>何か作ります何か作ります<br>何か作ります何か作ります<br>何か作ります何か作ります</p>
+            <p><a class="btn btn-secondary open-modal" href="#!" role="button">詳しく見る &raquo;</a></p>
+          </div>
+        </div>
+        <!-- モーダル -->
+        <div id="graydisplay"></div>
+
+        <!-- モーダル２ -->
+        <div class="modal-display">
+          <div id="bg"></div>
+          <div id="modal">
+            <div class="close-modal">
+              <img src="assets/img/mark_batsu.png" alt="close-mark">
+            </div>
+            <ul class="slider">
+              <li><a href="#"><img src="assets/img/01.jpg" alt="image01"></a></li>
+              <li><a href="#"><img src="assets/img/02.jpg" alt="image02"></a></li>
+              <li><a href="#"><img src="assets/img/03.jpg" alt="image03"></a></li>
+              <li><a href="#"><img src="assets/img/04.jpg" alt="image04"></a></li>
+              <li><a href="#"><img src="assets/img/05.jpg" alt="image05"></a></li>
+              <li><a href="#"><img src="assets/img/06.jpg" alt="image06"></a></li>
+              <li><a href="#"><img src="assets/img/07.jpg" alt="image07"></a></li>
+              <li><a href="#"><img src="assets/img/08.jpg" alt="image08"></a></li>
+            </ul>
+            <ul class="thumb">
+              <li><a href="#"><img src="assets/img/01.jpg" alt="image01"></a></li>
+              <li><a href="#"><img src="assets/img/02.jpg" alt="image02"></a></li>
+              <li><a href="#"><img src="assets/img/03.jpg" alt="image03"></a></li>
+              <li><a href="#"><img src="assets/img/04.jpg" alt="image04"></a></li>
+              <li><a href="#"><img src="assets/img/05.jpg" alt="image05"></a></li>
+              <li><a href="#"><img src="assets/img/06.jpg" alt="image06"></a></li>
+              <li><a href="#"><img src="assets/img/07.jpg" alt="image07"></a></li>
+              <li><a href="#"><img src="assets/img/08.jpg" alt="image08"></a></li>
+              <!-- <div class="description">
+                <p>ポートフォリオの説明をします</p>
+              </div> -->
+          </ul>
+        </div>
+      </div>
+      <hr>
+    </div>
+
+
+
+
+
+    <!-- Contact  -->
+    <div class="container" id="3">
+      <h1><span class="initial-font">C</span>ontact</h1>
+      <form id="UseData">
+        <div class="form-group">
+          <label for="formGroupExampleInput">ニックネーム</label>
+          <input type="text" class="form-control" name="name_form" id="formGroupExampleInput" placeholder="山田　太郎">
+        </div>
+        <div class="form-group">
+          <label for="formGroupExampleInput2">メールアドレス</label>
+          <input type="text" class="form-control" name="mail_form" id="formGroupExampleInput2" placeholder="sample@gmail.com">
+        </div>
+        <div class="form-group">
+          <label for="formGroupExampleInput2">お問い合わせ内容</label>
+          <textarea type="text" class="form-control" name="content_form" id="formGroupExampleInput3" placeholder="ここに記入してください"></textarea>
+        </div>
+        <button type="submit" href='#!' class="btn btn-primary mb-2">Submit</button>        
+
+      </form>
+      <!-- <hr> -->
+    </div>
+    
+    <!-- footer -->
+      <div class="footer">
+        <hr>
+        <div class="footer-left">
+          <p>&copy;  2020 TaikiNakama</p>
+        </div>
+        <div class="footer-right">
+          <a href="https://twitter.com/STaro0116" target="_blank"><span class="fa-stack"><i class="fas fa-circle fa-stack-2x"></i><span class="fab fa-lg fa-twitter fa-twi-color fa-stack-1x"></span></i></a>
+          <a href="#!"><span class="fa-stack"><i class="fas fa-square fa-2x fa-stack-1x"></i><i class="fab fa-facebook fa-face-color fa-stack-2x"></i></span></a>
+          <!-- <a href="#!"><span class="fa-stack"><i class="fas fa-insta-square fa-square fa-2x fa-stack-1x"></i><i class="fab fa-instagram  fa-stack-2x"></i></span></i></a> -->
+          <a href="#!"><i class="fas fa-2x fa-envelope fa-mail-color"></i></a>
+        </div>
+      </div>
+
+
+
+    <!-- bootstrap テンプレート」 -->
+    <!-- <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script> -->
+    <script>window.jQuery || document.write('<script src="assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- <script src="./dist/js/bootstrap.min.js"></script> -->
+    <!-- <script src="assets/js/vendor/popper.min.js"></script> -->
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="./assets/js/ie10-viewport-bug-workaround.js"></script>
+    
+    <!-- モーダル -->
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
+
+
+    <!-- スライダー -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/esm/popper.js"></script> -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script> -->
+    <script type="text/javascript" src="assets/slick/slick.min.js"></script>
+
+    <script src="./assets/js/script.js"></script>
+  </body>
+</html>
