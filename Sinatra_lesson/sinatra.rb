@@ -15,6 +15,8 @@ client = PG::connect(
 )
 
 
+
+
 def check_user
     unless session[:user]
         redirect "/signin"
