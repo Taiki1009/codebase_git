@@ -1,0 +1,31 @@
+<h1>ToDoリスト</h1>
+
+<table class="table table-bordered">
+    <thead>
+    <tr>
+        <th>No.</th>
+        <th>件名</th>
+        <th>詳細</th>
+        <th>開始時刻</th>
+        <th>終了時刻</th>
+    </tr>
+    </thead>
+
+<% @posts.each do |post|%>
+    <tbody>
+    <tr>
+        <th scope="row"><%= post['id'] %></th>
+        <td><%= post['title'] %></td>
+        <td><%= post['content'] %></td>
+        <td><%= post['start_time'] %></td>
+        <td><%= post['end_time'] %></td>
+    </tbody>
+<%= @test %>
+<% end %>
+</table>
+
+
+
+<div class="btn-signup">
+    <a type="submit" href='/new_schedule' class="btn btn-primary mb-2">予定を書き込む</a>
+</div>

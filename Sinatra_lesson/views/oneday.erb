@@ -1,0 +1,12 @@
+<h1>ToDoリスト</h1>
+<% @posts.each do |post|%>
+    <div>
+    <%= post['content']%>
+    </div>
+    <% end %>
+
+
+<form action="/posts" method="POST">
+    <div><input type="text" name="content"></div>
+    <div><input type="submit" value="登録"></div>
+</form>

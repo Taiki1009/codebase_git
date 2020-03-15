@@ -1,0 +1,7 @@
+<form action="/posts" method="POST" class="contact-form">
+    <div>件名：<input type="text" name="title"></div>
+    <div>詳細：<textarea type="text" name="content"></textarea></div>
+    <div>開始：<input type="timestamp" name="start" placeholder=<%=@now%>></div>
+    <div>終了：<input type="timestamp" name="end" placeholder=<%=@now%>></div>
+    <div><input type="submit" class="btn btn-primary mb-2" value="登録"></div>
+</form>
