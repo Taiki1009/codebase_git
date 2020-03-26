@@ -2,9 +2,13 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/style.css">
 </head>
+
+
+
+
 <body>
     <nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse">
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
@@ -19,23 +23,27 @@
             <a class="nav-link" href="/signup">新規登録</a>
             <a class="nav-link" href="/board">タイムライン</a> %>
 
-            <form action="/signin" class="btn-signup">
-              <input class="btn btn-primary mb-2 nav-item" type="submit" value="ログイン">
-            </form>            
             <form action="/signup" class="btn-signup">
-              <input class="btn btn-primary mb-2 nav-item" type="submit" value="新規登録">
+              <input class="btn btn-primary mb-2 nav-item" type="submit" value="signup">
             </form>            
-            <form action="/board" class="btn-signup">
-              <input class="btn btn-primary mb-2 nav-item" type="submit" value="ToDo">
+            <form action="/signin" class="btn-signup">
+              <input class="btn btn-primary mb-2 nav-item" type="submit" value="login">
             </form>            
-            
             <% if session[:user] %>
               <%# ログインされていたらサインアウトボタンを表示 %>
             <form action="/signout" method="post" class="btn-signup">
               <input type="hidden" name="_method" value="DELETE">
-              <input class="btn btn-primary mb-2 nav-item" type="submit" value="サインアウト">
+              <input class="btn btn-primary mb-2 nav-item" type="submit" value="logout">
             </form>
           <% end %>
+
+            <form action="/board" class="btn-signup">
+              <input class="btn btn-primary mb-2 nav-item" type="submit" value="MyPage">
+            </form>            
+            <form action="/all_schedule" class="btn-signup">
+              <input class="btn btn-primary mb-2 nav-item" type="submit" value="AllMember">
+            </form>            
+            
           </li>
         </ul>
       </div>

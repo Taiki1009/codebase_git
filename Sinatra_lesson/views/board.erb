@@ -1,4 +1,4 @@
-<h1>ToDoリスト</h1>
+<h1>予定リスト</h1>
 
 <table class="table table-bordered">
     <thead>
@@ -8,19 +8,25 @@
         <th>詳細</th>
         <th>開始時刻</th>
         <th>終了時刻</th>
+        <th>画像</th>
     </tr>
     </thead>
-
+<% i = 1 %>
 <% @posts.each do |post|%>
     <tbody>
     <tr>
-        <th scope="row"><%= post['id'] %></th>
-        <td><%= post['title'] %></td>
+        <th scope="row"><%= i %></th>
+        <td><a href="/post/<%= post['id'] %>"><%= post['title'] %></a></td>
         <td><%= post['content'] %></td>
         <td><%= post['start_time'] %></td>
         <td><%= post['end_time'] %></td>
+        <td>
+        <% if post['image'] %>
+            <a href="./images/<%= post['image']%>" alt="">image</a>
+        <% end %>
+        </td>
     </tbody>
-<%= @test %>
+    <% i += 1%>
 <% end %>
 </table>
 
@@ -28,4 +34,7 @@
 
 <div class="btn-signup">
     <a type="submit" href='/new_schedule' class="btn btn-primary mb-2">予定を書き込む</a>
+</div>
+<div class="btn-signup">
+    <a type="submit" href='/schedule' class="btn btn-primary mb-2">予定を見る</a>
 </div>

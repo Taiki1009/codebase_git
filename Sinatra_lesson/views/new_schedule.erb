@@ -1,7 +1,21 @@
-<form action="/posts" method="POST" class="contact-form">
-    <div>件名：<input type="text" name="title"></div>
-    <div>詳細：<textarea type="text" name="content"></textarea></div>
-    <div>開始：<input type="timestamp" name="start" placeholder=<%=@now%>></div>
-    <div>終了：<input type="timestamp" name="end" placeholder=<%=@now%>></div>
+<form action="/posts" method="POST" class="contact-form" enctype="multipart/form-data">
+    <label for="title">件名：</label>
+    <input type="text" name="title" required><br>
+    
+    <label for="content">詳細：</label>
+    <textarea type="text" name="content"></textarea><br>
+    <%# <div>開始：<input type="Date" name="start_date"><input type="time" name="start_time"></div> %>
+    
+    <label for="start">開始：</label>
+    <input type="timestamp" name="start" placeholder="2020-1-1 00:00:00" required><br>
+    
+    <label for="end">終了：</label>
+    <input type="timestamp" name="end" placeholder="2020-1-2 23:59:59" required><br>
+    
+    <label for ="image">画像：</label>
+    <input type="file" name="image"><br>
+
+
+
     <div><input type="submit" class="btn btn-primary mb-2" value="登録"></div>
 </form>
