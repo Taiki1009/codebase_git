@@ -1,9 +1,9 @@
 <div class="card">
 <% @posts.each do |post|%>
     <div class="card-body">
-        <h4 class="card-title"><%= post['title'] %></h4>
-        <h6 class="card-subtitle mb-2 text-muted"><%= post['start_time'] %> 〜 <%= post['end_time'] %></h6>
-        <p class="card-text">
+        <h3 class="card-header"><%= post['title'] %></h3><br>
+        <h6 class="card-subtitle mb-2 text-muted">日程：　<%= post['start_time'] %> 〜 <%= post['end_time'] %></h6>
+        <p class="card-text">詳細：
             <%= post['content'] %>
         </p>
         <% if post['image'] %>
@@ -13,10 +13,10 @@
 </div>
 
 <div class="btn-signup">
-    <a type="submit" href="/#!" class="btn btn-primary mb-2 detail-btn">削除</a>
+    <a type="submit" href="/delete/<%= post['id']%>" class="btn btn-primary mb-2 detail-btn">削除</a>
 </div>
 <div class="btn-signup">
-    <a type="submit" href="/#!" class="btn btn-primary mb-2 detail-btn">編集</a>
+    <a type="submit" href="/edit/<%= post['id']%>" class="btn btn-primary mb-2 detail-btn">編集</a>
 </div>
 
 <% end %>

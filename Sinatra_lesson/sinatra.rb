@@ -105,7 +105,6 @@ post '/posts' do
     title = params[:title]
     content = params[:content]
     start_time = params[:start]
-    # start_time = params[:start_date].to_s + " " + params[:start_time].to_s
     end_time = params[:end]
     
     if params['image']
@@ -162,9 +161,8 @@ get '/all_schedule' do
         @today = Time.new
     end
 
+    # TASK ユーザー名を取得したい
     @posts = client.exec_params("SELECT * FROM posts WHERE start_time BETWEEN '#{t1}' AND '#{t2}' ORDER BY user_id, start_time DESC")
-    # @user_name = client.exec_params("SELECT name FROM users WHERE id = '#{post['user_id']}")
-    # @user_name = session[:user]['name']
     erb :all_schedule
 end
 
@@ -186,27 +184,41 @@ get '/post/:id' do
     erb :detail
 end
 
+
+
+# TASK　編集・削除機能の追加
 # mypage無いにのみ配置
 # ユーザーが分かる状態で編集や削除をするため
-# get '/delete/:id' do
-#     check_login
-#     client.exec_params('delete from posts where id = $1',[params['id']])
-#     redirect '/board'
-#   end
+get '/delete/:id' do
+    check_user
+    user_name
+    client.exec_params('delete from posts where id = $1',[params['id']])
+    redirect '/board'
+  end
 
-#   get '/edit/:id' do
-#     check_login
-#     @res = client.exec_params('select * from posts where id = $1',[params['id']]).first
-#     @post_id = @res['id']
-#     erb :edit
-#   end
+  get '/edit/:id' do
+    check_user
+    user_name
+
+    @posts = client.exec_params("SELECT * FROM posts WHERE id = #{params['id']}")
+    # @post_id = @res['id']
+    erb :edit
+  end
   
-#   post '/edit/:id' do
-#     title = params['title']
-#     contents = params['contents']
-#     id = params['id']
-#     FileUtils.mv(params['image']['tempfile'], "./public/images/#{params['image']['filename']}")
-#     client.exec_params('update posts set title = $1, contents = $2, image = $3 where id = $4', [title, contents,params['image']['filename'], id])
-#     redirect '/board'
-#   end
-  
+  post '/edit/:id' do
+    title = params[:title]
+    content = params[:content]
+    start_time = params[:start]
+    end_time = params[:end]
+    
+    if params['image']
+        FileUtils.mv(params[:image][:tempfile], "./public/images/#{params[:image][:filename]}")
+        # DBに  各データを追加
+        client.exec_params("UPDATE posts set (title, content, start_time, end_time, image) VALUES ($1, $2, $3, $4, $5)", 
+        [title, content, start_time, end_time, params[:image][:filename]])
+    else
+        client.exec_params("UPDATE posts set (title, content, start_time, end_time) VALUES ($1, $2, $3, $4)", 
+        [title, content, start_time, end_time])
+    end
+    redirect '/board'
+  end

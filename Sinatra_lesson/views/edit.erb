@@ -1,0 +1,58 @@
+<% @posts.each do |post| %>
+<h1>編集ページ</h1>
+<form action="/edit/<%= post['id'] %>" method="POST" class="contact-form" enctype="multipart/form-data">
+    <label for="title">件名：</label>
+    <input type="text" name="title" value="<%= post['title'] %>" required><br>
+    
+    <label for="content">詳細：</label>
+    <textarea type="text" name="content" ><%= post['content'] %></textarea><br>
+
+<div class="form-group">
+    <div class="col">
+        <label for="datetimepicker1" class="pt-2 pr-2">開始:</label>
+        <div class="input-group date" id="datetimepicker1"  data-target-input="nearest">
+            <input type="text" name="start" class="form-control datetimepicker-input"  data-target="#datetimepicker1" value="<%= post['start_time'] %>" required/>
+            <div class="input-group-prepend" data-target="#datetimepicker1" data-toggle="datetimepicker">
+                <div class="input-group-text"><i class="far fa-calendar"></i></div>
+            </div>
+        </div>
+    </div>
+    <div class="col">
+        <label for="datetimepicker2" class="pt-2 pr-2">終了:</label>
+        <div class="input-group date" id="datetimepicker2" data-target-input="nearest">
+            <input type="text" name="end" class="form-control datetimepicker-input" data-target="#datetimepicker2" value="<%= post['end_time'] %>" required/>
+            <div class="input-group-prepend" data-target="#datetimepicker2" data-toggle="datetimepicker">
+                <div class="input-group-text"><i class="far fa-calendar"></i></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    <label for ="image">画像：</label>
+    <input type="file" name="image" value="<%= post['title'] %>" placeholder="<%= post['image'] %>"><br>
+
+
+
+    <div><input type="submit" class="btn btn-primary mb-2" value="登録"></div>
+</form>
+<% end %>
+
+<%# datepicker　取得 %>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/locale/ja.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.1.2/js/tempusdominus-bootstrap-4.min.js"></script>
+ <script type="text/javascript">
+    $(function () {
+        $('#datetimepicker').datetimepicker({
+            locale: 'ja',
+            minuteStep: 5,  
+            dayViewHeaderFormat: 'YYYY年 M月',
+            format: 'YYYY年MM月DD日'
+        });
+
+    });
+</script>

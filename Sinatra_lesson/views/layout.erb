@@ -2,27 +2,29 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
+    <%# datepicker　取得 %>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.1.2/css/tempusdominus-bootstrap-4.min.css" />
+    <script defer src="https://use.fontawesome.com/releases/v5.7.2/js/all.js" integrity="sha384-0pzryjIRos8mFBWMzSSZApWtPl/5++eIfzYmTgBBmXYdhvxPc+XcFEk+zJwDgWbP" crossorigin="anonymous"></script>
+    
     <link rel="stylesheet" href="/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/style.css">
 </head>
 
 
 
-
 <body>
+<%# ヘッダー内メニュー　＋　ゲスト名 %>
     <nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse">
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <a class="navbar-brand" href="#">Hello <%= @name %></a>
 
+      <%# ユーザー名を表示する %>
+      <a class="navbar-brand" href="#">Hello <%= @name %></a>
       <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <%# <a class="nav-link" href="/signin" method="post">ログイン</a>
-            <a class="nav-link" href="/signup">新規登録</a>
-            <a class="nav-link" href="/board">タイムライン</a> %>
-
             <form action="/signup" class="btn-signup">
               <input class="btn btn-primary mb-2 nav-item" type="submit" value="signup">
             </form>            
@@ -30,15 +32,14 @@
               <input class="btn btn-primary mb-2 nav-item" type="submit" value="login">
             </form>            
             <% if session[:user] %>
-              <%# ログインされていたらサインアウトボタンを表示 %>
-            <form action="/signout" method="post" class="btn-signup">
-              <input type="hidden" name="_method" value="DELETE">
-              <input class="btn btn-primary mb-2 nav-item" type="submit" value="logout">
-            </form>
-          <% end %>
-
+                <%# ログインされていたらサインアウトボタンを表示 %>
+              <form action="/signout" method="post" class="btn-signup">
+                <input type="hidden" name="_method" value="DELETE">
+                <input class="btn btn-primary mb-2 nav-item" type="submit" value="logout">
+              </form>
+            <% end %>
             <form action="/board" class="btn-signup">
-              <input class="btn btn-primary mb-2 nav-item" type="submit" value="MyPage">
+              <input class="btn btn-primary mb-2 nav-item" type="submit" value="TaskList">
             </form>            
             <form action="/all_schedule" class="btn-signup">
               <input class="btn btn-primary mb-2 nav-item" type="submit" value="AllMember">
