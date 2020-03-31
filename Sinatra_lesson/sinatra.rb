@@ -97,6 +97,7 @@ get '/board' do
     redirect "/signin" unless session[:user]
     user_id = session[:user]['id']
 
+    @now = Time.now
     @posts = client.exec_params("SELECT * FROM posts WHERE user_id = #{user_id} ORDER BY start_time ASC")
     return erb :board
 end
