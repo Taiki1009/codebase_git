@@ -40,8 +40,10 @@ body {
     width: 800px;
 }
 .card-body img {
-    max-width: 90%;
-    max-height: auto;
+    width: auto;
+    height: auto;
+    max-width: 750px;
+    max-height: 300px;
 }
 .btn {
     max-width: 150px;

@@ -11,12 +11,28 @@
         </thead>
         <% i = 1%>
     <% @posts.each do |post|%>
+
+    <% endDateTime = Time.parse(post['start_time']) %>
+    <% left = endDateTime - @now %>              <%# Time型同士の引き算は秒数で出される%>
+    <% left_d = left / (24*60*60) %>
+    <% left_h = left % (24*60*60) / (60*60) %>
+    <% left_m = left % (24*60*60) % (60*60) / 60 %>
+    <% d = left_d.floor %>                              <%# 残時間の日数　%>
+    <% h = left_h.floor %>                              <%# 残時間の時間　%>
+    <% m = left_m.floor %>                              <%# 残時間の分　%>
+
         <tbody>
         <tr>
             <th scope="row"><%= i %></th>
             <td><a href="/post/<%= post['id'] %>"><%= post['title'] %></a></td>
             <td><span class="eventDay"><%= post['start_time'] %></span> 〜 <%= post['end_time']%></td>
-            <td><div class="TimeLeft"></div></td>　　<%# js でカウントダウン表示 %>
+            <td>
+            <% if left >= 0 %>
+                残り　<%= left_d.floor %> 日 <%= left_h.floor %> 時間  <%= left_m.floor %> 分 
+            <%else%>
+                経過　<%= -1 * left_d.floor %> 日 <%= left_h.floor %> 時間  <%= left_m.floor %> 分
+            <%end%>
+            </td>
         </tbody>
     <% i += 1 %>
     <% end %>
@@ -29,28 +45,3 @@
         <a type="submit" href='/schedule' class="btn btn-primary mb-2">予定を見る</a>
     </div>
 </div>
-
-
-
-
-<script src="/js/jquery.min.js"></script>
-<script type="text/javascript">
-$(function() {
-    countDown();
-});
-    function countDown() {
-        // DBから日程を取得して入力
-    let endDateTime = $(".eventDay").text();
-    let startDateTime = '<%= @now %>';
-// console.log(endDateTime);
-// console.log(startDateTime);
-    let left = endDateTime - startDateTime;
-    const a_day = 24 * 60 * 60 * 1000;
-    let d = Math.floor(left / a_day)   // 期限から現在までの『残時間の日の部分』
-    let h = Math.floor((left % a_day) / (60 * 60 * 1000))   // 『残時間の時間の部分』
-    let m = Math.floor((left % a_day) / (60 * 1000)) % 60   //『残時間の分の部分』
-
-    $(".TimeLeft").text(d + '日' + h + '時間' + m + '分');
-    setTimeout('countDown()', 1000);
-}
-</script>

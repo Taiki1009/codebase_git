@@ -20,10 +20,6 @@
             margin-top: 50px;
             margin-bottom: 25px;
         }
-        /* .dataPanel {
-            width: 100%;
-            margin-right: 0; 
-        } */
         table th:first-child {
             width: 100%;
         }
@@ -33,11 +29,12 @@
 
 <body>
     <div class="contain">
+
         <h1>
             <small> <%= @today.year %> / <%= @today.month %>  / <%= @today.day %> のスケジュール</small>
         </h1>
-
         <form action="/schedule" method="get">
+
         <p>
         <label for="start">日時指定 ： </label>
         <input type="date" name="start"> ~ 
@@ -46,7 +43,6 @@
         <div><input type="submit" class="btn btn-primary mb-2" value="検索"></div>
         </p>
         </form>
-
 
         <div class="gantt"></div>
     </div>

@@ -3,6 +3,7 @@ require 'sinatra/reloader'
 require 'sinatra/cookies'
 require 'pg'
 require 'time'
+require 'date'
 
 enable :sessions
 
@@ -102,6 +103,9 @@ get '/board' do
     return erb :board
 end
 
+
+
+
 post '/posts' do
     title = params[:title]
     content = params[:content]
@@ -134,36 +138,42 @@ get '/schedule' do
     user_id = session[:user]['id']
 
     if params['start'] && params['end']
-        t1 = params['start']
-        t2 = params['end']
-        @today = Time.parse(t1)
+        t1 = Time.parse(params['start'])
+        t2 = Time.parse(params['end']) + 24*60*60 -1
+        @today = t1
     else
-        t1 = Time.parse("00:00:00");
-        t2 = Time.parse("23:59:59"); 
+        t1 = Time.parse("00:00:00")
+        t2 = Time.parse("23:59:59") 
         @today = Time.new
     end
+    @test = t1
+    @test2 = t2
+
 
     @posts = client.exec_params("SELECT * FROM posts WHERE user_id = #{user_id} AND start_time BETWEEN '#{t1}' AND '#{t2}' ORDER BY user_id, start_time DESC")
     @user_name = session[:user]['name']
     erb :schedule
 end
+
 get '/all_schedule' do
     user_name
     check_user
     user_id = session[:user]['id']
 
     if params['start'] && params['end']
-        t1 = params['start']
-        t2 = params['end']
-        @today = Time.parse(t1)
+        t1 = Time.parse(params['start'])
+        t2 = Time.parse(params['end']) + 24*60*60 -1
+        @today = t1
     else
-        t1 = Time.parse("00:00:00");
-        t2 = Time.parse("23:59:59"); 
+        t1 = Time.parse("00:00:00")
+        t2 = Time.parse("23:59:59") 
         @today = Time.new
     end
+    @test = t1
+    @test2 = t2
 
     # TASK ユーザー名を取得したい
-    @posts = client.exec_params("SELECT * FROM posts WHERE start_time BETWEEN '#{t1}' AND '#{t2}' ORDER BY user_id, start_time DESC")
+    @posts = client.exec_params("SELECT * FROM posts WHERE start_time BETWEEN '#{t1}' AND '#{t2}' AND end_time BETWEEN '#{t1}' AND '#{t2}' ORDER BY user_id, start_time DESC")
     erb :all_schedule
 end
 
@@ -202,7 +212,6 @@ get '/delete/:id' do
     user_name
 
     @posts = client.exec_params("SELECT * FROM posts WHERE id = #{params['id']}")
-    # @post_id = @res['id']
     erb :edit
   end
   
@@ -211,15 +220,18 @@ get '/delete/:id' do
     content = params[:content]
     start_time = params[:start]
     end_time = params[:end]
+    id = params['id']
     
     if params['image']
         FileUtils.mv(params[:image][:tempfile], "./public/images/#{params[:image][:filename]}")
         # DBに  各データを追加
-        client.exec_params("UPDATE posts set (title, content, start_time, end_time, image) VALUES ($1, $2, $3, $4, $5)", 
-        [title, content, start_time, end_time, params[:image][:filename]])
+        client.exec_params("UPDATE posts 
+            SET title = $1, content = $2, start_time = $3, end_time = $4, image = $5 WHERE id = #{id}", 
+            [title, content, start_time, end_time, params[:image][:filename]])
     else
-        client.exec_params("UPDATE posts set (title, content, start_time, end_time) VALUES ($1, $2, $3, $4)", 
-        [title, content, start_time, end_time])
+        client.exec_params("UPDATE posts 
+            SET title = $1, content = $2, start_time = $3, end_time = $4 WHERE id = #{id}", 
+            [title, content, start_time, end_time])
     end
     redirect '/board'
   end
