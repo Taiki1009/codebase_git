@@ -72,20 +72,21 @@
             {source: [
             <% @posts.each do |post|%>
                 {
-                name: '<%= post['title'] %>  ( <%= @user_name %> )',
+                name: '<%= post['title'] %> ',
                 desc: '',
                 values: [{
                     from: '<%= post['start_time']%>',
                     to: '<%= post['end_time']%>',
                     label: '<%= post['title']%>',
                     desc: '<%= post['content']%>',
-
-                    // <% if post['user_id'] == 1 %>
-                    //     <%color = "ganttRed"%>
-                    // <% elsif post['user_id'] == 28 %>
-                    //     <%color = "ganttGreen"%>
-                    // <% end %>
-                    customClass: 'ganttRed'
+                    customClass: 
+                    <% if post['user_id'] == '28' %>
+                        "ganttBlue"
+                    <% elsif post['user_id'] == '41' %>
+                        "ganttGreen"
+                    <% else %>
+                        "ganttRed"
+                    <% end %>
                 }]
             },
             <% end %>

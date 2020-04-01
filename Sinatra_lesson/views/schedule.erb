@@ -34,13 +34,12 @@
             <small> <%= @today.year %> / <%= @today.month %>  / <%= @today.day %> のスケジュール</small>
         </h1>
         <form action="/schedule" method="get">
-
         <p>
-        <label for="start">日時指定 ： </label>
-        <input type="date" name="start"> ~ 
-        <label for="end"></label>
-        <input type="date" name="end"><br>
-        <div><input type="submit" class="btn btn-primary mb-2" value="検索"></div>
+            <label for="start">日時指定 ： </label>
+            <input type="date" name="start"> ~ 
+            <label for="end"></label>
+            <input type="date" name="end"><br>
+            <div><input type="submit" class="btn btn-primary mb-2" value="検索"></div>
         </p>
         </form>
 
@@ -71,7 +70,14 @@
                     to: '<%= post['end_time']%>',
                     label: '<%= post['title']%>',
                     desc: '<%= post['content']%>',
-                    customClass: "ganttRed"
+                    customClass: 
+                    <% if post['user_id'] == '28' %>
+                        "ganttBlue"
+                    <% elsif post['user_id'] == '41' %>
+                        "ganttGreen"
+                    <% else %>
+                        "ganttRed"
+                    <% end %>
                 }]
             },
             <% end %>

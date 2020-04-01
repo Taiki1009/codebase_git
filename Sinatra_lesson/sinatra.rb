@@ -138,12 +138,12 @@ get '/schedule' do
     user_id = session[:user]['id']
 
     if params['start'] && params['end']
-        t1 = Time.parse(params['start'])
-        t2 = Time.parse(params['end']) + 24*60*60 -1
+        t1 = Time.parse(params['start'])              #取得した日付で00:00:00
+        t2 = Time.parse(params['end']) + 24*60*60 -1  #取得した日付23:59:59にする
         @today = t1
     else
         t1 = Time.parse("00:00:00")
-        t2 = Time.parse("23:59:59") 
+        t2 = Time.parse("23:59:59") + 4*24*60*60 -1   #当日から３日以内のイベントを表示
         @today = Time.new
     end
     @test = t1
@@ -151,7 +151,6 @@ get '/schedule' do
 
 
     @posts = client.exec_params("SELECT * FROM posts WHERE user_id = #{user_id} AND start_time BETWEEN '#{t1}' AND '#{t2}' ORDER BY user_id, start_time DESC")
-    @user_name = session[:user]['name']
     erb :schedule
 end
 
@@ -166,7 +165,7 @@ get '/all_schedule' do
         @today = t1
     else
         t1 = Time.parse("00:00:00")
-        t2 = Time.parse("23:59:59") 
+        t2 = Time.parse("23:59:59") + 4*24*60*60 -1  #当日から３日以内のイベントを表示
         @today = Time.new
     end
     @test = t1
